@@ -15,7 +15,7 @@ class ChooseAppPage extends StatelessWidget {
         ),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            if (snapshot.data != null) {
+            if (snapshot.hasData) {
               List<Application> apps = snapshot.data!;
               return ListView.builder(
                 itemCount: apps.length,
@@ -25,7 +25,7 @@ class ChooseAppPage extends StatelessWidget {
                     title: Text(app.appName),
                     leading: app is ApplicationWithIcon && app.icon != null
                         ? Image.memory(app.icon!)
-                        : null,
+                        : Icon(Icons.error_outline), // Placeholder icon
                     onTap: () => DeviceApps.openApp(app.packageName),
                   );
                 },

@@ -1,10 +1,13 @@
 import 'dart:async';
+// import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:my_seeing_eye/secondPage.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // final cameras = await availableCameras();
+
   runApp(const MyApp());
-  
 }
 
 class MyApp extends StatelessWidget {
