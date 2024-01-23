@@ -148,9 +148,11 @@ class _SecondPageState extends State<SecondPage> {
                         ),
                         Positioned(
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               SizedBox(
-                                width: screenSize.width * 0.19,
+                                width: screenSize.width * 0.03,
                               ),
                               GestureDetector(
                                 onTap: () {},
