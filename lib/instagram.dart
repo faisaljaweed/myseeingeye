@@ -4,14 +4,14 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:split_view/split_view.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class SplitScreenPage extends StatefulWidget {
-  const SplitScreenPage({super.key});
+class Instagram extends StatefulWidget {
+  const Instagram({super.key});
   @override
   // ignore: library_private_types_in_public_api
-  _SplitScreenPageState createState() => _SplitScreenPageState();
+  _InstagramState createState() => _InstagramState();
 }
 
-class _SplitScreenPageState extends State<SplitScreenPage> {
+class _InstagramState extends State<Instagram> {
   late CameraController _cameraController;
   late GoogleMapController _mapController;
   late List<CameraDescription> cameras;
@@ -45,11 +45,6 @@ class _SplitScreenPageState extends State<SplitScreenPage> {
       body: SplitView(
         viewMode: SplitViewMode.Vertical, // Split screen horizontally
         children: [
-          // IconButton(
-          //     onPressed: () {
-          //       Navigator.pop(context);
-          //     },
-          //     icon: const Icon(Icons.arrow_left)),
           showCamera
               ? (_cameraController.value.isInitialized
                   ? CameraPreview(_cameraController)
@@ -66,8 +61,7 @@ class _SplitScreenPageState extends State<SplitScreenPage> {
                 ), // Google Maps view
           const Center(
             child: WebView(
-              initialUrl:
-                  'https://www.google.com/maps', // Replace with your URL
+              initialUrl: 'https://www.instagram.com/', // Replace with your URL
               javascriptMode: JavascriptMode.unrestricted,
             ),
           ),

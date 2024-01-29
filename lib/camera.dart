@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:device_apps/device_apps.dart';
 
 class ChooseAppPage extends StatelessWidget {
+  const ChooseAppPage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Choose an App'),
+        title: const Text('Choose an App'),
       ),
       body: FutureBuilder<List<Application>>(
         future: DeviceApps.getInstalledApplications(
@@ -23,18 +24,18 @@ class ChooseAppPage extends StatelessWidget {
                   Application app = apps[index];
                   return ListTile(
                     title: Text(app.appName),
-                    leading: app is ApplicationWithIcon && app.icon != null
-                        ? Image.memory(app.icon!)
-                        : Icon(Icons.error_outline), // Placeholder icon
+                    leading: app is ApplicationWithIcon
+                        ? Image.memory(app.icon)
+                        : const Icon(Icons.error_outline), // Placeholder icon
                     onTap: () => DeviceApps.openApp(app.packageName),
                   );
                 },
               );
             } else {
-              return Center(child: Text("No apps available"));
+              return const Center(child: Text("No apps available"));
             }
           }
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         },
       ),
     );

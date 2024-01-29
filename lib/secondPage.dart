@@ -1,7 +1,13 @@
+// ignore_for_file: file_names
 import 'package:device_apps/device_apps.dart';
 import 'package:flutter/material.dart';
+import 'package:my_seeing_eye/calendar.dart';
+import 'package:my_seeing_eye/chrome.dart';
+import 'package:my_seeing_eye/daraz.dart';
+import 'package:my_seeing_eye/facebook.dart';
+import 'package:my_seeing_eye/instagram.dart';
 import 'package:my_seeing_eye/splitview.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:my_seeing_eye/youtube.dart';
 import 'package:image_picker/image_picker.dart';
 
 class SecondPage extends StatefulWidget {
@@ -20,7 +26,6 @@ class _SecondPageState extends State<SecondPage> {
       includeSystemApps: true,
       onlyAppsWithLaunchIntent: true,
     );
-
     // Display the list in a dialog or a new screen
     // For simplicity, I'll show a basic dialog example
     // ignore: use_build_context_synchronously
@@ -28,7 +33,7 @@ class _SecondPageState extends State<SecondPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Choose an App'),
+          title: const Text('Choose an App'),
           content: SingleChildScrollView(
             child: ListBody(
               children: apps.map((app) {
@@ -51,15 +56,14 @@ class _SecondPageState extends State<SecondPage> {
   void _launchApp(String packageName) async {
     // Close the dialog
     Navigator.pop(context);
-
     // Launch the app
     if (await DeviceApps.isAppInstalled(packageName)) {
       DeviceApps.openApp(packageName);
-
       // You may need a custom solution to overlay this on the camera screen
+      // ignore: use_build_context_synchronously
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (_) => SplitScreenPage()),
+        MaterialPageRoute(builder: (_) => const SplitScreenPage()),
       );
     }
   }
@@ -114,7 +118,7 @@ class _SecondPageState extends State<SecondPage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (_) => SplitScreenPage()));
+                                    builder: (_) => const SplitScreenPage()));
                           },
                           child: Column(children: [
                             Image.asset("images/Get-Direction.png"),
@@ -136,11 +140,186 @@ class _SecondPageState extends State<SecondPage> {
                     SizedBox(
                       height: screenSize.height * 0.03,
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: screenSize.width * 0.03,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => const Facebook()));
+                          },
+                          child: Column(children: [
+                            Image.asset("images/Open-Camera.png"),
+                            SizedBox(
+                              height: screenSize.height * 0.02,
+                            ),
+                            const Text(
+                              "facebook\n    open",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ]),
+                        ),
+                        SizedBox(
+                          width: screenSize.width * 0.24,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => const Instagram()));
+                          },
+                          child: Column(children: [
+                            Image.asset("images/Get-Direction.png"),
+                            SizedBox(
+                              height: screenSize.height * 0.02,
+                            ),
+                            const Text(
+                              "instagram\n     open",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ]),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: screenSize.height * 0.03,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: screenSize.width * 0.03,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => const Chrome()));
+                          },
+                          child: Column(children: [
+                            Image.asset("images/Open-Camera.png"),
+                            SizedBox(
+                              height: screenSize.height * 0.02,
+                            ),
+                            const Text(
+                              "Google \n  open",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ]),
+                        ),
+                        SizedBox(
+                          width: screenSize.width * 0.25,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => const Watsapps()));
+                          },
+                          child: Column(children: [
+                            Image.asset("images/Get-Direction.png"),
+                            SizedBox(
+                              height: screenSize.height * 0.02,
+                            ),
+                            const Text(
+                              "Watsapp\n    open",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ]),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: screenSize.height * 0.03,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: screenSize.width * 0.05,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => const Daraz()));
+                          },
+                          child: Column(children: [
+                            Image.asset("images/How-to-Get-Directions.png"),
+                            SizedBox(
+                              height: screenSize.height * 0.02,
+                            ),
+                            const Text(
+                              "Amazon",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ]),
+                        ),
+                        SizedBox(
+                          width: screenSize.width * 0.26,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => const Youtube()));
+                          },
+                          child: Column(children: [
+                            Image.asset("images/Choose-Application.png"),
+                            SizedBox(
+                              height: screenSize.height * 0.02,
+                            ),
+                            const Text(
+                              "Youtube",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ]),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: screenSize.height * 0.03,
+                    ),
                     Stack(
                       children: [
                         SizedBox(
-                          height: screenSize.height * 0.43,
-                          width: screenSize.width * 1,
                           child: Image.asset(
                             "images/my-seen-eye-image.png",
                             fit: BoxFit.cover,
@@ -177,11 +356,6 @@ class _SecondPageState extends State<SecondPage> {
                               ),
                               GestureDetector(
                                 onTap: _openAppList,
-                                // Navigator.push(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //         builder: (_) => SplitScreenPage()));
-
                                 child: Column(children: [
                                   Image.asset("images/Choose-Application.png"),
                                   SizedBox(
@@ -196,10 +370,10 @@ class _SecondPageState extends State<SecondPage> {
                                     ),
                                   ),
                                 ]),
-                              )
+                              ),
                             ],
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ]),
@@ -208,24 +382,10 @@ class _SecondPageState extends State<SecondPage> {
             )));
   }
 
-  void _openMap() async {
-    // Replace 'your_map_url_here' with the actual map URL you want to open
-    final mapUrl = 'https://www.google.com/maps';
-    try {
-      if (await canLaunch(mapUrl)) {
-        await launch(mapUrl);
-      } else {
-        throw 'Could not launch $mapUrl';
-      }
-    } catch (e) {
-      print('Error launching map: $e');
-    }
-  }
-
   void _openCamera() async {
     final picker = ImagePicker();
+    // ignore: deprecated_member_use
     final pickedImage = await picker.getImage(source: ImageSource.camera);
-
     if (pickedImage != null) {}
   }
 }

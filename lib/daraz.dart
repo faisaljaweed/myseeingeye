@@ -4,14 +4,14 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:split_view/split_view.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class SplitScreenPage extends StatefulWidget {
-  const SplitScreenPage({super.key});
+class Daraz extends StatefulWidget {
+  const Daraz({super.key});
   @override
   // ignore: library_private_types_in_public_api
-  _SplitScreenPageState createState() => _SplitScreenPageState();
+  _DarazState createState() => _DarazState();
 }
 
-class _SplitScreenPageState extends State<SplitScreenPage> {
+class _DarazState extends State<Daraz> {
   late CameraController _cameraController;
   late GoogleMapController _mapController;
   late List<CameraDescription> cameras;
@@ -45,11 +45,6 @@ class _SplitScreenPageState extends State<SplitScreenPage> {
       body: SplitView(
         viewMode: SplitViewMode.Vertical, // Split screen horizontally
         children: [
-          // IconButton(
-          //     onPressed: () {
-          //       Navigator.pop(context);
-          //     },
-          //     icon: const Icon(Icons.arrow_left)),
           showCamera
               ? (_cameraController.value.isInitialized
                   ? CameraPreview(_cameraController)
@@ -67,7 +62,7 @@ class _SplitScreenPageState extends State<SplitScreenPage> {
           const Center(
             child: WebView(
               initialUrl:
-                  'https://www.google.com/maps', // Replace with your URL
+                  'https://www.amazon.com/?&tag=googleglobalp-20&ref=pd_sl_7nnedyywlk_e&adgrpid=159651196451&hvpone=&hvptwo=&hvadid=675114638367&hvpos=&hvnetw=g&hvrand=11741476808970746372&hvqmt=e&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9077144&hvtargid=kwd-10573980&hydadcr=2246_13468515', // Replace with your URL
               javascriptMode: JavascriptMode.unrestricted,
             ),
           ),
